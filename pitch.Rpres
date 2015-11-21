@@ -1,0 +1,63 @@
+<style>
+.small-code pre code {
+  font-size: 1em;
+}
+</style>
+
+Recipe Visualizer
+========================================================
+author: Adam Ross
+date: 11/22/2015
+
+Goals
+========================================================
+
+- Help cooks learn how to build their own recipes by letting them visualize ingredient compositions.
+
+- Help cooks convert recipes to use weight measurements.
+
+Why use this app?
+========================================================
+
+Understanding what makes a recipe works often comes to the composition of ingredients that goes into it. Being able to visualize a recipe helps one understand it in a way that numbers on a page doesn't 
+
+Cooking by weight makes recipes more accurate and reproducible.
+
+Data
+========================================================
+class: small-code
+left: 40%
+
+```{r, echo = FALSE}
+food <- read.csv("foodconvv.csv", sep="`")
+units <- read.csv("foodconvvv.csv", sep="`")
+colnames(units) <- c("Milliliters", "Decimeters", "Liters", 
+                     "teaspoon",  "Tablespoon", "Fluid Ounces", "Ounces", 
+                     "Cups", "Pints", "Quarts", "Gallons", "Grams", "Pounds")
+units$Liters <- as.numeric(1000)
+units$Gallons <-as.numeric(3785)
+```
+
+```{r}
+t(units)
+```
+***
+```{r}
+food[1:10,]
+```
+
+<small>Data Source: 
+http://blog.khymos.org/2014/01/23/volume-to-weight-calculator-for-the-kitchen/</small>
+
+Future Plans
+==========================================================
+
+- Expanded database with more foods and nutrient and water composition.
+
+- Improve visual appeal with coherent color theme and color coded food groups.
+
+- Cut/Paste full recipes, no need for manual entry of ingredients.
+
+- Save and store recipes.
+
+- More visual features such as dry/wet ingredient ratio and nutrient chart.
